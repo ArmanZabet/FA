@@ -98,7 +98,7 @@ for (var i = 0; i < goldItems.length; i++) {
 	myTable.rows[i + 3].cells[1].innerHTML = goldItems[i + 1];
 }
 
-var salePerMesghal = 9999000;
+var salePerMesghal = 10266000;
 var marketCoefficient = 1.05975897806006;
 
 myTable.rows[14].cells[1].innerHTML = marketCoefficient;
