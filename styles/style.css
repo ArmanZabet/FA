@@ -2,7 +2,7 @@
     background-color:aquamarine;
 }
 html {
-    font-size: 20px; /* px means "pixels": the base font size is now 10 pixels high */
+    font-size: 50px; /* px means "pixels": the base font size is now 10 pixels high */
     color: blue;
     background-color: #00539f;
     direction: rtl;
@@ -18,7 +18,7 @@ th {
     color:yellow;
 }
 th,td {
-    column-width: 200px;
+    column-width: 500px;
 }
 td {
     background-color: white;
@@ -43,7 +43,7 @@ li {
 }
 
 body {
-    width: 400px;
+    width: 1000px;
     margin: 0 auto;
     background-color: #ff9500;
     padding: 20px 20px 20px 20px;
