@@ -17,7 +17,7 @@ th {
     background-color: #00539f;
     color:yellow;
 }
-th,td {
+th, td {
     column-width: 450px;
     padding: 20px 40px 0 0;
 }
