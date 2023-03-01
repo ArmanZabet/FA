@@ -10,6 +10,7 @@ html {
 
 table {
     text-align: right;
+    box-shadow: 10px 20px 30px blue;
 }
 th {
     border-bottom: 1px solid;
