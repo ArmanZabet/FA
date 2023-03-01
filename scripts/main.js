@@ -178,15 +178,15 @@ num = Math.round((goldItems[8] / goldItems[4]) * goldItems[3] * salePerGram);
 var usFormat = new Intl.NumberFormat().format(num);
 myTable.rows[12].cells[1].innerHTML = usFormat.concat(" تومان");
 usFormat = null;
-
+/*
 //13rateToDate
 num = (salePerGram - buyPerGram) / buyPerGram * 100;
 var usFormat = new Intl.NumberFormat().format(num);
 myTable.rows[15].cells[1].innerHTML = usFormat.concat(" %");
 usFormat = null;
+*/
 
-
-//14365dayRateForecast
+//13rateToDate
 num = (salePerGram - buyPerGram) / buyPerGram;
 var usFormat = new Intl.NumberFormat().format(Math.round(num * 100));
 myTable.rows[15].cells[1].innerHTML = usFormat.concat(" %");
@@ -195,10 +195,10 @@ usFormat = null;
 //14365dayRateForecast
 var date1 = new Date('02/12/2023');
 var date2 = new Date();
-var diffDays = date2.getDate() - date1.getDate();
-num = num * 365 / diffDays * 100;
-
-myTable.rows[16].cells[1].innerHTML = Math.round(num)
+var difference = date2.getTime() - date1.getTime();
+var diffDays = Math.ceil(difference / (1000 * 3600 * 24));
+num = num * 365 / diffDays ;
+myTable.rows[16].cells[1].innerHTML = Math.round(num *100)
 myTable.rows[16].cells[1].innerHTML += " %";
 
 var link = document.createElement("a");
