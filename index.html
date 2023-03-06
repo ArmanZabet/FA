@@ -13,16 +13,19 @@
             font-family: "customFont";
             src: url("sitefonts/bNazanin.ttf") format("truetype");
         }
-body {
-        font-family: "customFont", Arial, sans-serif;
 
-<!--         font-weight: bold;  -->
+        body {
+            font-family: "customFont", Arial, sans-serif;
+            <!-- font-weight: bold; -->
         }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+
 </head>
-<body onLoad="moveover('')">
+<body onLoad="moveover(''); applayGold()">
     <form name="form1">
-        <a href="help.html">راهنمــا</a><br />
+        <label id="next"><<                      </label><label id="page">1</label>
+        <br />
         <table id="dateTimeTable">
             <tr>
                 <th> ساعت</th>
@@ -104,11 +107,18 @@ body {
         </table>
     </form>
 
-
-
-
-
-
+    <script>
+        $("#next").click(function () {
+            switch (document.getElementById("page").textContent) {
+                case "1":
+                    $('#page').text("2");
+                    break;
+                case "2":
+                    $('#page').text("1");
+            }
+            applayGold();
+        });
+    </script>
 
     <script type="text/javascript" src="scripts/main.js" charset="UTF-8"></script>
 </body>

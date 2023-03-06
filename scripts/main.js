@@ -23,6 +23,9 @@ var goldTitles = new initArray("عنوان", "تاریخ خرید", "مقدار 
 var goldItems = new initArray("آبشده نقدی", "1401/11/23", "300.975", "638067000", "5buyPerGram", "6salePerGram", "610000000", "28067000", "9Farrokh-Share",
     "10Arman-Share", "11salePerMesghal", "12marketCoefficient", "13rateToDate", "14365dayRateForecast", "15Factor", "16kivaanGold");
 
+
+
+
 var weekday = new initArray("يکشنبه", "دوشنبه", "سه شنبه", "چهارشنبه", "پنجشنبه", "جمعه", "شنبه");
 var solar_days_of_month = new initArray(0, 31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30);
 var christ_names_of_month = new initArray("Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec");
@@ -128,104 +131,125 @@ var marketCoefficient = tagObj[0].getElementsByTagName("marketCoefficient")[0].c
 
 
 
-myTable.rows[14].cells[1].innerHTML = marketCoefficient;
 
 
-let num = goldItems[4];
-var usFormat = new Intl.NumberFormat().format(num);
-myTable.rows[6].cells[1].innerHTML = usFormat.concat(" تومان");;
-usFormat = null;
+function applayGold() {
+    switch (document.getElementById("page").textContent) {
+        case "1":
+            goldItems[2] = "1401/11/23";
+            goldItems[3] = "300.975";
+            goldItems[4] = "638067000";
+            goldItems[7] = "610000000";
+            goldItems[8] = "28067000";
+            break;
+        case "2":
+            goldItems[2] = "1401/12/07";
+            goldItems[3] = "30.47886100496424";
+            goldItems[4] = "80000000";
+            goldItems[7] = "80000000";
+            goldItems[8] = "0";
+            break;
+    }
+    for (var i = 0; i < goldItems.length; i++) {
+        myTable.rows[i + 3].cells[1].innerHTML = goldItems[i + 1];
+    }
+    myTable.rows[14].cells[1].innerHTML = marketCoefficient;
 
-num = goldItems[7];
-usFormat = new Intl.NumberFormat().format(num);
-myTable.rows[9].cells[1].innerHTML = usFormat.concat(" تومان");;
-usFormat = null;
+    let num = goldItems[4];
+    var usFormat = new Intl.NumberFormat().format(num);
+    myTable.rows[6].cells[1].innerHTML = usFormat.concat(" تومان");;
+    usFormat = null;
 
-num = goldItems[8];
-var usFormat = new Intl.NumberFormat().format(num);
-myTable.rows[10].cells[1].innerHTML = usFormat.concat(" تومان");;
-usFormat = null;
+    num = goldItems[7];
+    usFormat = new Intl.NumberFormat().format(num);
+    myTable.rows[9].cells[1].innerHTML = usFormat.concat(" تومان");;
+    usFormat = null;
 
-//11salePerMesghal
-var usFormat = new Intl.NumberFormat().format(salePerMesghal);
-myTable.rows[13].cells[1].innerHTML = usFormat.concat(" تومان");;
-usFormat = null;
+    num = goldItems[8];
+    var usFormat = new Intl.NumberFormat().format(num);
+    myTable.rows[10].cells[1].innerHTML = usFormat.concat(" تومان");;
+    usFormat = null;
 
-
-
-//5buyPerGram
-var buyPerGram = goldItems[4] / goldItems[3];
-num = buyPerGram;
-var usFormat = new Intl.NumberFormat().format(num);
-myTable.rows[7].cells[1].innerHTML = usFormat.concat(" تومان");;
-usFormat = null;
-
-//6salePerGram
-var salePerGram = salePerMesghal * 0.217 * marketCoefficient;
-num = Math.round(salePerGram);
-var usFormat = new Intl.NumberFormat().format(num);
-myTable.rows[8].cells[1].innerHTML = usFormat.concat(" تومان");
-usFormat = null;
-
-//9Farrokh-Share
-num = Math.round((goldItems[7] / goldItems[4]) * goldItems[3] * salePerGram);
-var usFormat = new Intl.NumberFormat().format(num);
-myTable.rows[11].cells[1].innerHTML = usFormat.concat(" تومان");
-usFormat = null;
-
-//10Arman - Share
-num = Math.round((goldItems[8] / goldItems[4]) * goldItems[3] * salePerGram);
-var usFormat = new Intl.NumberFormat().format(num);
-myTable.rows[12].cells[1].innerHTML = usFormat.concat(" تومان");
-usFormat = null;
-/*
-//13rateToDate
-num = (salePerGram - buyPerGram) / buyPerGram * 100;
-var usFormat = new Intl.NumberFormat().format(num);
-myTable.rows[15].cells[1].innerHTML = usFormat.concat(" %");
-usFormat = null;
-*/
-
-//13rateToDate
-num = (salePerGram - buyPerGram) / buyPerGram;
-var usFormat = new Intl.NumberFormat().format(Math.round(num * 100));
-myTable.rows[15].cells[1].innerHTML = usFormat.concat(" %");
-usFormat = null;
-
-//14365dayRateForecast
-var date1 = new Date('02/12/2023');
-var date2 = new Date();
-var difference = date2.getTime() - date1.getTime();
-var diffDays = Math.ceil(difference / (1000 * 3600 * 24));
-num = num * 365 / diffDays ;
-myTable.rows[16].cells[1].innerHTML = Math.round(num *100)
-myTable.rows[16].cells[1].innerHTML += " %";
-
-var link = document.createElement("a");
-link.setAttribute("href", "files/Gold14011123.pdf");
-
-link.className = "someCSSclass";
-// For IE only, you can simply set the innerText of the node.
-// The below code, however, should work on all browsers.
-var linkText = document.createTextNode("فاکتور خرید");
-link.appendChild(linkText);
-
-myTable.rows[17].cells[1].innerHTML = ""
-myTable.rows[17].cells[1].appendChild(link);
+    //11salePerMesghal
+    var usFormat = new Intl.NumberFormat().format(salePerMesghal);
+    myTable.rows[13].cells[1].innerHTML = usFormat.concat(" تومان");;
+    usFormat = null;
 
 
-var link = document.createElement("a");
-link.setAttribute("href", "https://keivangold.ir/user/login");
 
-link.className = "someCSSclass";
-// For IE only, you can simply set the innerText of the node.
-// The below code, however, should work on all browsers.
-var linkText = document.createTextNode("تلفن تماس");
-link.appendChild(linkText);
+    //5buyPerGram
+    var buyPerGram = goldItems[4] / goldItems[3];
+    num = buyPerGram;
+    var usFormat = new Intl.NumberFormat().format(num);
+    myTable.rows[7].cells[1].innerHTML = usFormat.concat(" تومان");;
+    usFormat = null;
 
-myTable.rows[18].cells[1].innerHTML = ""
-myTable.rows[18].cells[1].appendChild(link);
+    //6salePerGram
+    var salePerGram = salePerMesghal * 0.217 * marketCoefficient;
+    num = Math.round(salePerGram);
+    var usFormat = new Intl.NumberFormat().format(num);
+    myTable.rows[8].cells[1].innerHTML = usFormat.concat(" تومان");
+    usFormat = null;
 
+    //9Farrokh-Share
+    num = Math.round((goldItems[7] / goldItems[4]) * goldItems[3] * salePerGram);
+    var usFormat = new Intl.NumberFormat().format(num);
+    myTable.rows[11].cells[1].innerHTML = usFormat.concat(" تومان");
+    usFormat = null;
+
+    //10Arman - Share
+    num = Math.round((goldItems[8] / goldItems[4]) * goldItems[3] * salePerGram);
+    var usFormat = new Intl.NumberFormat().format(num);
+    myTable.rows[12].cells[1].innerHTML = usFormat.concat(" تومان");
+    usFormat = null;
+    /*
+    //13rateToDate
+    num = (salePerGram - buyPerGram) / buyPerGram * 100;
+    var usFormat = new Intl.NumberFormat().format(num);
+    myTable.rows[15].cells[1].innerHTML = usFormat.concat(" %");
+    usFormat = null;
+    */
+
+    //13rateToDate
+    num = (salePerGram - buyPerGram) / buyPerGram;
+    var usFormat = new Intl.NumberFormat().format(Math.round(num * 100));
+    myTable.rows[15].cells[1].innerHTML = usFormat.concat(" %");
+    usFormat = null;
+
+    //14365dayRateForecast
+    var date1 = new Date('02/12/2023');
+    var date2 = new Date();
+    var difference = date2.getTime() - date1.getTime();
+    var diffDays = Math.ceil(difference / (1000 * 3600 * 24));
+    num = num * 365 / diffDays;
+    myTable.rows[16].cells[1].innerHTML = Math.round(num * 100)
+    myTable.rows[16].cells[1].innerHTML += " %";
+
+    var link = document.createElement("a");
+    link.setAttribute("href", "files/Gold14011123.pdf");
+
+    link.className = "someCSSclass";
+    // For IE only, you can simply set the innerText of the node.
+    // The below code, however, should work on all browsers.
+    var linkText = document.createTextNode("فاکتور خرید");
+    link.appendChild(linkText);
+
+    myTable.rows[17].cells[1].innerHTML = ""
+    myTable.rows[17].cells[1].appendChild(link);
+
+
+    var link = document.createElement("a");
+    link.setAttribute("href", "https://keivangold.ir/user/login");
+
+    link.className = "someCSSclass";
+    // For IE only, you can simply set the innerText of the node.
+    // The below code, however, should work on all browsers.
+    var linkText = document.createTextNode("تلفن تماس");
+    link.appendChild(linkText);
+
+    myTable.rows[18].cells[1].innerHTML = ""
+    myTable.rows[18].cells[1].appendChild(link);
+}
 /************************************************************************************************************ */
 
 function calcul_distant_a_solar_date_from_48(year, month, day, result) {
