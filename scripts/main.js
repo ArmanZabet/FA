@@ -144,7 +144,7 @@ function applayGold() {
             break;
         case "2":
             goldItems[2] = "1401/12/07";
-            goldItems[3] = "30.47886100496424";
+            goldItems[3] = "30.48";
             goldItems[4] = "80000000";
             goldItems[7] = "80000000";
             goldItems[8] = "0";
