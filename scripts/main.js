@@ -134,6 +134,7 @@ var marketCoefficient = tagObj[0].getElementsByTagName("marketCoefficient")[0].c
 
 
 function applayGold() {
+    var factor;
     switch (document.getElementById("page").textContent) {
         case "1":
             goldItems[2] = "1401/11/23";
@@ -141,6 +142,7 @@ function applayGold() {
             goldItems[4] = "638067000";
             goldItems[7] = "610000000";
             goldItems[8] = "28067000";
+            factor = "files/Gold14011123.pdf";
             break;
         case "2":
             goldItems[2] = "1401/12/07";
@@ -148,6 +150,7 @@ function applayGold() {
             goldItems[4] = "80000000";
             goldItems[7] = "80000000";
             goldItems[8] = "0";
+            factor = "files/Gold14011207.pdf";
             break;
     }
     for (var i = 0; i < goldItems.length; i++) {
@@ -226,7 +229,7 @@ function applayGold() {
     myTable.rows[16].cells[1].innerHTML += " %";
 
     var link = document.createElement("a");
-    link.setAttribute("href", "files/Gold14011123.pdf");
+    link.setAttribute("href", factor);
 
     link.className = "someCSSclass";
     // For IE only, you can simply set the innerText of the node.
