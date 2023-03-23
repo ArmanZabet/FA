@@ -23,6 +23,18 @@
 
 </head>
 <body onLoad="moveover(''); applayGold()">
+    <script lang="javascript">
+        (function () {
+            if (window.localStorage) {
+                if (!localStorage.getItem('firstLoad')) {
+                    localStorage['firstLoad'] = true;
+                    window.location.reload();
+                }
+                else
+                    localStorage.removeItem('firstLoad');
+            }
+        })();
+    </script>
     <form name="form1">
         <label id="next"><<                      </label><label id="page">1</label>
         <br />
